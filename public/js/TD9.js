@@ -19,7 +19,6 @@ function computeSimilarities() {
         alert("You need to enter the second DNA (B)")
     } else {
         let URL = '/' + user + '/distance?A=' + A + "&B=" + B
-        console.log(URL)
         $.getJSON(URL, (data) => {
             if ($('#result').length == 0) {
                 $('#sendDiv').after('<br><div id="result"></div>')

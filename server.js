@@ -23,37 +23,31 @@ app.set('port', (port))
 app.use(express.static(publicDir))
 
 http.createServer(app).listen(port, (err) => {
-    if (err) console.log('Probleme : ', err)
-    else console.log(`Le serveur est en ligne sur le port : `, app.get('port'))
+    
 }) //ou app.listen(port)
 
 setInterval(resetNbRequests, 60000)
 
 app.all('/:var(index.html)?', (req,res) => {
-    console.log('requete : ', req.originalUrl)
     res.status(200).send(pug.renderFile('index.pug'))
 })
 
 app.get("/:user/distance",(req,res) => {
-    console.log('requete : ', req.originalUrl)
     let user=req.params.user
     if (keys.includes(user)) {
         let A=req.query.A
         let B=req.query.B
         if (A==undefined || B==undefined) {
-            console.log("requête mal formée")
             res.status(400).json({
                 "utilisateur": user,
                 "erreur": 'la requête est mal formée'
             })
         } else if ((A.length >= 50) || (B.length >= 50)) {
-            console.log("chaine trop longue")
             res.status(400).json({
                 "utilisateur": user,
                 "erreur": 'une des deux chaînes est trop longue (gardez des chaînes inférieures à 50)'
             })
         } else if (!RegExp("^[ACGTacgt]+$").test(A) || !RegExp("^[ACGTacgt]+$").test(B)) {
-            console.log("chaine ne code pas ADN")
             res.status(400).json({
                 "utilisateur": user,
                 "erreur": 'une des chaînes ne code pas de l’ADN'
@@ -74,7 +68,6 @@ app.get("/:user/distance",(req,res) => {
                     "interrogations minute": nbRequestsMap.get(user)
                 })
             } else {
-                console.log("nombre de requêtes dépassé")
                 res.status(401).json({
                     "utilisateur": user,
                     "erreur": 'nombre de requêtes dépassé, attendez une minute'
@@ -82,7 +75,6 @@ app.get("/:user/distance",(req,res) => {
             }
         }
     } else {
-        console.log("utilisateur non autorisé")
         res.status(401).json({
             "utilisateur": user,
             "erreur": 'vous n’avez pas les autorisations pour utiliser ce service'
@@ -95,7 +87,6 @@ app.get('/nbRequests', (req,res) => {
 })
 
 app.all('*', (req,res) => {
-    console.log("requete invalide : ", req.path)
     res.status(404).send("Page not found !")
 })
 
