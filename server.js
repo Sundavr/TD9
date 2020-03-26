@@ -2,10 +2,9 @@ const http = require('http')
 const levenshtein = require('js-levenshtein')
 const express = require('express')
 const app = express();
-const FS = require('fs')
 const pug = require('pug')
 const port = process.env.PORT || 5000
-let publicDir = __dirname + '/public'; // rep contenant les fichiers
+let publicDir = __dirname + '/public' // rep contenant les fichiers
 let keys = [
     'gibbs4567',
     'toto0000',
@@ -16,20 +15,25 @@ let keys = [
     'mael3333',
     'alexandre4444',
     'coucoucestmoi5555',
-    'menier9999',
+    'menier7777',
 ]
 let nbRequestsMap = new Map(keys.map(k => [k, 0]))
 app.set('port', (port))
 app.use(express.static(publicDir))
 
 http.createServer(app).listen(port, (err) => {
-    
+    if (!err) console.log('server is running on port', port)
+    else console.log(err)
 }) //ou app.listen(port)
 
 setInterval(resetNbRequests, 60000)
 
 app.all('/:var(index.html)?', (req,res) => {
     res.status(200).send(pug.renderFile('index.pug'))
+})
+
+app.all('/dnaComparator', (req,res) => {
+    res.status(200).send(pug.renderFile('dnaComparator.pug'))
 })
 
 app.get("/:user/distance",(req,res) => {
@@ -64,8 +68,8 @@ app.get("/:user/distance",(req,res) => {
                     "A": A,
                     "B": B,
                     "distance": distance,
-                    "temps de calcul (ms)": execTime,
-                    "interrogations minute": nbRequestsMap.get(user)
+                    "tempsCalcul": execTime,
+                    "interrogationsMinute": nbRequestsMap.get(user)
                 })
             } else {
                 res.status(401).json({
@@ -83,7 +87,7 @@ app.get("/:user/distance",(req,res) => {
 })
 
 app.get('/nbRequests', (req,res) => {
-    res.status(200).json(Array.from(nbRequestsMap.entries()))
+    res.status(200).json([...nbRequestsMap.values()].reduce((a,b) => a+b))
 })
 
 app.all('*', (req,res) => {

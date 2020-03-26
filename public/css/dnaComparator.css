@@ -1,0 +1,125 @@
+html {
+    font-family: KeepCalm, helvetica, sans-serif;
+}
+
+html, body {
+    width: 100px;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(19, 19, 19);
+}
+
+.backArrow {
+    width: 40px;
+    margin: 3px 10px;
+}
+
+.backIndexRef:hover {
+    cursor: pointer;
+}
+
+@font-face {
+    font-family: KeepCalm;
+    src: url("KeepCalm-Medium.ttf");
+    font-weight: normal;
+}
+
+.main_nav {
+    background-color: #3193F5;
+    border-bottom: solid 3px white;
+    width: 606px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.title {
+    margin-left: 190px;
+    color: white;
+    font-weight: 100;
+    font-size: 26px;
+    width: max-content;
+}
+
+#form {
+    clear: right;
+    padding: 0;
+    width: 450%;
+}
+
+input:not(:last-child) {
+    width: 100%;
+    border: solid 2px white;
+    line-height: 40px;
+    padding: 0 1em;
+    margin-bottom: 1em;
+    background-color: rgb(156, 26, 26);
+    border-radius: 5px;
+}
+
+.field {
+    margin-left: 50px;
+}
+
+::-webkit-input-placeholder {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+::-moz-placeholder {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+:-ms-input-placeholder {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+:-moz-placeholder {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#computeButton {
+    background-color: rgb(21, 177, 112);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: solid white 2px;
+    border-radius: 100px;
+    padding: 0.7em 2em;
+    float: center;
+    margin-left: 180px;
+}
+
+#computeButton:hover {
+    background-color: rgb(9, 61, 40);
+    cursor: pointer;
+}
+
+.resultLi {
+    width: max-content;
+    margin-left: 160px;
+    color: rgb(226, 1, 1);
+}
+
+#hideButton {
+    background-color: rgb(226, 1, 1);
+    margin-left: 240px;
+    margin-top: 7px;
+    border-radius: 50px;
+    color: white;
+    border: solid white 2px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#hideButton:hover {
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+}

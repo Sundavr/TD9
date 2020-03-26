@@ -6,27 +6,11 @@ html(lang='fr')
         script(src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous")
-        script(src="js/TD9.js")
-        link(href="css/TD9.css" type="text/css" rel="stylesheet")
+        script(src="js/index.js")
+        link(href="css/index.css" type="text/css" rel="stylesheet")
         link(href="images/logo.png" rel="icon" type="image/png")
     body
-        div
-            label(for='username') Username
-            br
-            input(type='text' id='username')
-        div
-            br
-            label(for='A') A
-            br
-            input(type='text' id='A')
-        div
-            br
-            label(for='B') B
-            br
-            input(type='text' id='B')
-        div#sendDiv
-            br
-            input(type='button' id="computeButton" value="Compute similarities")
-        div
-            h3 Number of requests:
-            ul#requestsList
+        a#logoRef
+            img#logo(src="images/logo.png")
+        h3 Number of requests: 
+            p#nbRequests.inline 0

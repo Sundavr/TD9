@@ -1,0 +1,31 @@
+doctype html
+html(lang='fr')
+    head
+        title DNA Comparator
+        meta(content='text/html', charset='utf-8')
+        script(src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous")
+        script(src="js/dnaComparator.js")
+        link(href="css/dnaComparator.css" type="text/css" rel="stylesheet")
+        link(href="images/logo.png" rel="icon" type="image/png")
+    body
+        div.wrapper
+            div.main_nav
+                a.indexRef
+                    img.backArrow(src="images/backArrow.png")
+            h1.title DNA Distance
+            div#form
+                input#username.field(type="text" name="username" placeholder="Username")
+                input#A.field(type="text" name="A" placeholder="A")
+                input#B.field(type="text" name="B" placeholder="B")
+                input#computeButton(type="button" value="Compute similarities")
+            ul#results
+                li#userResult.resultLi
+                li#dateResult.resultLi
+                li#AResult.resultLi
+                li#BResult.resultLi
+                li#distanceResult.resultLi
+                li#tempsResult.resultLi
+                li#nbInterrogationsResult.resultLi
+                input#hideButton(type='button' value="hide" onclick="hideResults()")
