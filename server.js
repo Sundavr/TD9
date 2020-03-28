@@ -51,7 +51,7 @@ app.get("/:user/distance",(req,res) => {
                 "utilisateur": user,
                 "erreur": 'une des deux chaînes est trop longue (gardez des chaînes inférieures à 50)'
             })
-        } else if (!RegExp("^[ACGTacgt]+$").test(A) || !RegExp("^[ACGTacgt]+$").test(B)) {
+        } else if (!RegExp("^[ACGT]+$").test(A) || !RegExp("^[ACGT]+$").test(B)) {
             res.status(400).json({
                 "utilisateur": user,
                 "erreur": 'une des chaînes ne code pas de l’ADN'
